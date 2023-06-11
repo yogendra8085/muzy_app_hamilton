@@ -17,6 +17,7 @@ class AseetsPath{
   static String LINKEDIN="assets/images/linkedin.png";
   static String INSTAGRAM="assets/images/instagram.png";
   static String LINE="assets/images/line.png";
+  static String CARD="assets/images/card.png";
   
 
 

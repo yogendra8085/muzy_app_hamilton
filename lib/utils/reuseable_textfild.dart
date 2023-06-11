@@ -14,12 +14,15 @@ class ReusableTextfiled extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  TextField(
+    return  TextFormField(
       maxLines: maxline,
       minLines: minline,
+
+
       style:  StyleConst.textStyle14white,
       controller: editingController,
       decoration: InputDecoration(
+        isDense: true,
           hintText: "${title}",
           border:  OutlineInputBorder(
             borderSide: BorderSide(color: Color(0xffFFFFFF)),

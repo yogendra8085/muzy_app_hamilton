@@ -9,8 +9,9 @@ import 'followingpage.dart';
 import 'live_streaming_1.dart';
 
 class FollowerAndFollowingTabbarPage extends StatefulWidget {
-  const FollowerAndFollowingTabbarPage({super.key});
+  int index;
 
+  FollowerAndFollowingTabbarPage({required this.index});
   @override
   State<FollowerAndFollowingTabbarPage> createState() => _FollowerAndFollowingTabbarPageState();
 }
@@ -23,7 +24,7 @@ class _FollowerAndFollowingTabbarPageState extends State<FollowerAndFollowingTab
   void initState() {
     // TODO: implement initState
     super.initState();
-    _controller = new TabController(length: 2, vsync: this);
+    _controller = new TabController(length: 2, vsync: this,initialIndex: widget.index);
   }
   List list=[
     Followerspage(),
@@ -33,6 +34,7 @@ class _FollowerAndFollowingTabbarPageState extends State<FollowerAndFollowingTab
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
+      initialIndex: widget.index,
       length: 2,
       child: Scaffold(
          backgroundColor: Color(0xff040415),

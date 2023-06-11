@@ -1,28 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:muzy_app/constant/constvalue/const.dart';
 import 'package:muzy_app/utils/reuseable_button.dart';
 import 'package:sizer/sizer.dart';
 
 import '../utils/reuseable_textfild.dart';
-import 'advancebooking2_page.dart';
 
-class AdvanceBokking extends StatefulWidget {
-  const AdvanceBokking({Key? key}) : super(key: key);
+class AdvanceBokking2 extends StatefulWidget {
+  const AdvanceBokking2({Key? key}) : super(key: key);
 
   @override
-  State<AdvanceBokking> createState() => _AdvanceBokkingState();
+  State<AdvanceBokking2> createState() => _AdvanceBokking2State();
 }
 
-TextEditingController _eventnamecontroller = TextEditingController();
+TextEditingController _internationalpartyband = TextEditingController();
 TextEditingController _personnamecontroller = TextEditingController();
 TextEditingController _contactcontroller = TextEditingController();
 TextEditingController _eventcontroller = TextEditingController();
 TextEditingController _streamingcontroller = TextEditingController();
 
-class _AdvanceBokkingState extends State<AdvanceBokking> {
+class _AdvanceBokking2State extends State<AdvanceBokking2> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -49,8 +46,8 @@ class _AdvanceBokkingState extends State<AdvanceBokking> {
                       height: 2.h,
                     ),
                     ReusableTextfiled(
-                      title: "Enter Name",
-                      editingController: _eventnamecontroller,
+                      title: "International Party Band",
+                      editingController: _internationalpartyband,
                     ),
                     SizedBox(
                       height: 2.h,
@@ -100,17 +97,42 @@ class _AdvanceBokkingState extends State<AdvanceBokking> {
                         editingController: _streamingcontroller,
                         maxline: 6,
                         minline: 5),
+                    SizedBox(
+                      height: 2.h,
+                    ),
+
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10,),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("Per hour Price",style:StyleConst.textStyle18whitesemibold ,),
+                          Text("5 KD",style:StyleConst.textStyle18redsemibold ,),
+
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("Total Price",style:StyleConst.textStyle18whitesemibold ,),
+                          Text("5 KD * 2 = 10 KD",style:StyleConst.textStyle18redsemibold ,),
+
+                        ],
+                      ),
+                    )
 
                   ],
                 ),
               ),
-            SizedBox(height: 10,),
-               
+              SizedBox(
+                height: 1.h,
+              ),
+
               ReuseableButton2(
-                  hint: "Confirm", color: Colors.red, onsumbit: () {
-                    Get.to(()=>AdvanceBokking2());
-              })
-           
+                  hint: "Confirm", color: Colors.red, onsumbit: () {})
             ],
           ),
         ),

@@ -6,15 +6,15 @@ import 'package:sizer/sizer.dart';
 
 import '../utils/reuseable_list_tile.dart';
 
-class BrowseOurMusiciansVideo extends StatefulWidget {
-  const BrowseOurMusiciansVideo({Key? key}) : super(key: key);
+class BrowseOurMusiciansVideo4 extends StatefulWidget {
+  const BrowseOurMusiciansVideo4({Key? key}) : super(key: key);
 
   @override
-  State<BrowseOurMusiciansVideo> createState() =>
-      _BrowseOurMusiciansVideoState();
+  State<BrowseOurMusiciansVideo4> createState() =>
+      _BrowseOurMusiciansVideo4State();
 }
 
-class _BrowseOurMusiciansVideoState extends State<BrowseOurMusiciansVideo> {
+class _BrowseOurMusiciansVideo4State extends State<BrowseOurMusiciansVideo4> {
   @override
   Widget build(BuildContext context) {
     return Container(

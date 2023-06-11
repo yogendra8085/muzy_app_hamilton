@@ -41,6 +41,12 @@ dependencies:
   flutter_switch: ^0.3.2
   flutter_rating_bar: ^4.0.1
   blurrycontainer: ^1.0.2
+  dotted_border: ^2.0.0+3
+
+  google_nav_bar: ^5.0.6
+  get: ^4.6.5
+  shimmer: ^2.0.0
+  cached_network_image: ^3.2.3
 
 dev_dependencies:
   flutter_test:

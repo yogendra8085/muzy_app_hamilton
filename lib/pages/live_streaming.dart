@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:get/get.dart';
 import 'package:muzy_app/constant/assetspath/assets_path.dart';
 import 'package:muzy_app/constant/constvalue/const.dart';
 import 'package:muzy_app/pages/live_streaming_1.dart';
 import 'package:sizer/sizer.dart';
 
+import '../controller/tab_bar_controller.dart';
 import 'live_streaming_2.dart';
 
 class LiveStreaming extends StatefulWidget {
@@ -16,38 +18,26 @@ class LiveStreaming extends StatefulWidget {
 }
 
 class _LiveStreamingState extends State<LiveStreaming>
-    with TickerProviderStateMixin {
-  AnimationController? controller;
-  Animation? animation;
+    {
+ 
 
   GlobalKey key = GlobalKey();
   @override
   void initState() {
-    Future.delayed(Duration(microseconds: 100)).then((v) {
-      controller = AnimationController(
-          vsync: this, duration: Duration(milliseconds: 500));
-
-      tabWidth = (key.currentContext?.size?.width)! / 2;
-      // var width = (media.size.width - (2 * media.padding.left)) / 2;
-      // animation = Tween<double>(begin: 0, end: tabWidth).animate(controller!);
-
-      setState(() {});
-
-      controller?.addListener(() {
-        setState(() {});
-      });
-    });
     super.initState();
   }
 
-  var selectedValue = 0;
-  double tabWidth = 0;
+ 
   List list = [
     LiveStreaming2(),
     LiveStreaming1(),
   ];
+  final tabcontroller1=Get.put(tabcontroller);
+  int currentindex = 0;
   @override
   Widget build(BuildContext context) {
+    print(currentindex);
+
     return Scaffold(
       backgroundColor: ColorConst.black,
       appBar: AppBar(
@@ -61,127 +51,94 @@ class _LiveStreamingState extends State<LiveStreaming>
           child: Image.asset(AseetsPath.WHITELOGO),
         ),
       ),
-      body: Container(
-        margin: EdgeInsets.symmetric(horizontal: 3.w, vertical: 2.h),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            TextField(
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: ColorConst.white,
-                hintText: "Search Band Orchestra Singer",
-                hintStyle: StyleConst.textStyle16grey,
-                suffixIcon: Icon(
-                  Icons.search,
-                  color: ColorConst.grey,
-                ),
-                border: StyleConst.borderstyle,
-                focusedBorder: StyleConst.borderstyle,
-                disabledBorder: StyleConst.borderstyle,
-                enabledBorder: StyleConst.borderstyle,
-                errorBorder: StyleConst.borderstyle,
-              ),
-            ),
-            SizedBox(
-              height: 2.h,
-            ),
-            GestureDetector(
-              onTap: () {
-                selectedValue == 0
-                    ? this.controller?.forward()
-                    : controller?.reverse();
-                selectedValue = selectedValue == 0 ? 1 : 0;
-              },
-              child: Container(
-                key: key,
-                height: 37,
-                decoration: BoxDecoration(
-                    color: ColorConst.black,
-                    borderRadius: BorderRadius.circular(22)),
-                child: Stack(
-                  children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Container(
-                          height: 37,
-                          width: tabWidth,
-                          decoration: BoxDecoration(
-                            // color: Colors.green,
-                            borderRadius: BorderRadius.circular(22),
-                          ),
-                        ),
-                      ],
+      body: GetBuilder <tabcontroller>(
+        init: tabcontroller(),
+        builder: (newcontroller) {
+          return Container(
+            margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                TextField(
+                  decoration: InputDecoration(
+                    isDense: true,
+                    filled: true,
+                    fillColor: ColorConst.white,
+                    hintText: "Search Band Orchestra Singer",
+                    hintStyle: StyleConst.textStyle16grey,
+                    suffixIcon: Icon(
+                      Icons.search,
+                      color: ColorConst.grey,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Expanded(
-                          child: Container(
-                            height: 37,
-                            decoration: BoxDecoration(
-                              color: selectedValue == 1
-                                  ? ColorConst.white
-                                  : ColorConst.red,
-                              borderRadius: BorderRadius.circular(22),
-                            ),
-                            width: tabWidth,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                SizedBox(width: 5),
-                                Text(
-                                  "Live Streaming",
-                                  style: selectedValue == 1
-                                      ? StyleConst.textStyle16grey
-                                      : StyleConst.textStyle16white,
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 5.w,
-                        ),
-                        Expanded(
-                          child: Container(
-                            height: 37,
-                            decoration: BoxDecoration(
-                              color: selectedValue == 0
-                                  ? ColorConst.white
-                                  : ColorConst.red,
-                              borderRadius: BorderRadius.circular(22),
-                            ),
-                            width: tabWidth,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                SizedBox(width: 5),
-                                Text(
-                                  "Band Orchestra Singer",
-                                  style: selectedValue == 0
-                                      ? StyleConst.textStyle16grey
-                                      : StyleConst.textStyle16white,
-                                )
-                              ],
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ],
+                    border: StyleConst.borderstyle,
+                    focusedBorder: StyleConst.borderstyle,
+                    disabledBorder: StyleConst.borderstyle,
+                    enabledBorder: StyleConst.borderstyle,
+                    errorBorder: StyleConst.borderstyle,
+                  ),
                 ),
-              ),
+                SizedBox(
+                  height: 2.h,
+                ),
+               
+                  Row(
+                    children: [
+                      
+                      Expanded(
+                        child: InkWell(
+                            onTap: (){
+                          newcontroller.live();
+                            newcontroller.change(0);
+                        },
+                          child: Container(
+                              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                             
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color:newcontroller.livestreaming.value? ColorConst.red:ColorConst.white,
+                              ),
+                              child: Center(
+                                  child: Text(
+                                "Live Streaming",
+                                style: newcontroller.livestreaming.value? StyleConst.textStyle16white:StyleConst.textStyle16grey,
+                              ))),
+                        ),
+                      ),
+                      SizedBox(width: 10,),
+                       Expanded(
+                        child: InkWell(
+                          onTap: (){
+                            newcontroller.brand();
+                              newcontroller.change(1);
+                          },
+                          child: Container(
+                               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                             
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color:newcontroller.brandsinger.value? ColorConst.red:ColorConst.white,
+                              ),
+                              child: Center(
+                                  child: Text(
+                                "Band Orchestra Singer",
+                                style:newcontroller.brandsinger.value? StyleConst.textStyle16white:StyleConst.textStyle16grey,
+                              ))),
+                        ),
+                      ),
+                       
+                    ],
+                  ),
+                
+                SizedBox(
+                  height: 2.h,
+                ),
+                Expanded(
+                  child: list[  newcontroller.index.value],
+                ),
+              ],
             ),
-            SizedBox(
-              height: 2.h,
-            ),
-            Expanded(
-              child: list[selectedValue],
-            ),
-          ],
-        ),
+          );
+        }
       ),
     );
   }

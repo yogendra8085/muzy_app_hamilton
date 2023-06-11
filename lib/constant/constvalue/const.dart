@@ -6,6 +6,9 @@ class ColorConst{
   static const Color white=Color(0xffFFFFFF);
   static const Color black=Color(0xff000000);
   static const Color grey=Color(0xff808080);
+  static const Color colorShimmerBase = Color(0xFFE0E0E0); 
+  static const Color colorShimmerHighlight = Color(0xFFF5F5F5); 
+  static const Color colorShimmer = Color(0xFFBDBDBD);
 }
 class StyleConst{
   static String fontFamily="Gibson";
@@ -122,6 +125,7 @@ class StyleConst{
 
 
   );
+
       static TextStyle textStyle14white=TextStyle(
       fontSize: 14,
       fontFamily: fontFamily,
@@ -145,6 +149,14 @@ class StyleConst{
       
       
     );
+  static TextStyle textStyle18redsemibold=TextStyle(
+    fontSize: 18,
+    fontFamily: fontFamily,
+    color: ColorConst.red,
+    fontWeight: FontWeight.w600,
+
+
+  );
      static TextStyle textStyle15white=TextStyle(
       fontSize: 15,
       fontFamily: fontFamily,
@@ -153,5 +165,14 @@ class StyleConst{
       
       
     );
+  static TextStyle textStyle20blue=TextStyle(
+    fontSize: 20,
+    fontFamily: fontFamily,
+    color: Color(0xff000087),
+    fontWeight: FontWeight.bold
+
+
+
+  );
 }
 

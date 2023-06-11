@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:muzy_app/pages/photas_page.dart';
 import 'package:muzy_app/pages/setlist_page.dart';
 import 'package:muzy_app/pages/video_page.dart';
@@ -8,6 +10,9 @@ import 'package:sizer/sizer.dart';
 
 import '../constant/assetspath/assets_path.dart';
 import '../constant/constvalue/const.dart';
+import '../utils/reuseable_cached_network_image.dart';
+import '../utils/reuseable_live_button.dart';
+import 'browse_our_musicians_video.dart';
 import 'info_page.dart';
 
 class BrowseOurMusiciansDetails extends StatefulWidget {
@@ -38,58 +43,43 @@ class _BrowseOurMusiciansDetailsState extends State<BrowseOurMusiciansDetails> {
       ),
       body: Column(
         children: [
+         
           Stack(
-            alignment: Alignment.topRight,
             children: [
-              Container(
-                height: 25.h,
-                width: double.infinity,
-                child: Image.network("https://i.ytimg.com/vi/PiPIyPJPlFY/maxresdefault.jpg",fit: BoxFit.cover,))
-             ,
-               Padding(
-                 padding: EdgeInsets.only(right: 2.w,top: 1.h),
-                 child: Container(
-                      decoration: BoxDecoration(color: ColorConst.red,borderRadius: BorderRadius.circular(25)),
-              child: Padding(
-                  padding:  EdgeInsets.symmetric(horizontal: 4.w,vertical: 1.3.h),
-                  child: Text("Live Now",style: StyleConst.textStyle16white,),
-              ),
-              ),
-               )
+              ReusableImageWithShimmer(url:"https://i.ytimg.com/vi/PiPIyPJPlFY/maxresdefault.jpg",height: 200,boxFit: BoxFit.cover,isCircle: false, ),
+              Align(
+                alignment: Alignment.topRight,
+                child: ReuseableLiveButton(text: "Live Now",sumbit: () {
+                  Get.to(()=>BrowseOurMusiciansVideo4());
+                },)),
+
             ],
           ),
-           SizedBox(
-              height: 2.h,
-            ),
-          Container(
-            height: 4.5.h,
-            child: ListView.builder(
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-        itemCount: list.length,
-        itemBuilder: (context, index) {
-        return  Padding(
-          padding:  EdgeInsets.symmetric(horizontal: 1.w,),
-          child: InkWell(
-            onTap: (){
-               i=index;
-               setState(() {
-                 
-               });
-            },
-            child: Container(
-           
-              width: 23.w,
-                            decoration: BoxDecoration(color:i==index?ColorConst.red: ColorConst.white,borderRadius: BorderRadius.circular(25)),
-                    child: Center(child: Text(list[index],style:i==index? StyleConst.textStyle16white:StyleConst.textStyle16grey)),
-          
-                    ),
-          ),
-
-        );
-      },),
-          ),
-          SizedBox(height: 3.h,),
+               SizedBox(height: 20,),
+        SizedBox(
+          height: 40,
+          width: double.infinity,
+          child: ListView.builder(
+            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
+            itemCount: list.length,
+            itemBuilder: (context,index){
+            return InkWell(
+              onTap: (){
+                setState(() {
+                  i=index;
+                });
+              },
+              child: Container(
+              padding:  EdgeInsets.symmetric(horizontal: 30,),
+              margin:  EdgeInsets.symmetric(horizontal: 5,),
+                decoration: BoxDecoration(color:i==index?ColorConst.red: ColorConst.white,borderRadius: BorderRadius.circular(25)),
+                        child: Center(child: Text(list[index],style:i==index? StyleConst.textStyle16white:StyleConst.textStyle16grey)),),
+            );
+          }),
+        ),
+        SizedBox(height: 20,),
+         
         Expanded(child: list2[i]
         ,)
 

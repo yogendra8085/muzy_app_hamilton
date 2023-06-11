@@ -6,6 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sizer/sizer.dart';
 
 import '../constant/constvalue/const.dart';
+import '../utils/resueable_photo_container.dart';
 
 class VideoPage extends StatefulWidget {
   const VideoPage({super.key});
@@ -24,31 +25,8 @@ class _VideoPageState extends State<VideoPage> {
                 crossAxisSpacing: 2.0,  
                 mainAxisSpacing: 2.0,  
                 children: List.generate(20, (index) {  
-                  return Container(
-                            width: 40.w,
-                          
-                            margin: EdgeInsets.symmetric(horizontal: 2.w,vertical: 1.h),
-                            decoration: BoxDecoration(
-                              color: ColorConst.white,
-                              borderRadius: BorderRadius.circular(8),
-        
-                         ),
-                            child: Stack(
-                            alignment: Alignment.center,
-                              children: [
-                             Container(
-
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8),
-                                image: DecorationImage(image: NetworkImage("https://c.saavncdn.com/758/295-Sidhu-Moose-Wala--English-2021-20210922022502-500x500.jpg",),fit: BoxFit.cover)
-                              ),
-                             ),
-                             
-                             Icon(FontAwesomeIcons.circlePlay,color: ColorConst.white,size: 40,)
-                              
-        
-                            ]),
-                          );
+                  return
+                  Reuseablephotocontainer(icon: FontAwesomeIcons.circlePlay,);
                 }  
                 )  
             )  

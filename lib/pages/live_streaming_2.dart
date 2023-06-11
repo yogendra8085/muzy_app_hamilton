@@ -5,6 +5,9 @@ import 'package:sizer/sizer.dart';
 
 import '../constant/assetspath/assets_path.dart';
 import '../constant/constvalue/const.dart';
+import '../utils/reuseable_cached_network_image.dart';
+import '../utils/reuseable_container .dart';
+import '../utils/reuseable_live_streaming_container.dart';
 
 class LiveStreaming2 extends StatefulWidget {
   const LiveStreaming2({super.key});
@@ -19,7 +22,9 @@ class _LiveStreaming2State extends State<LiveStreaming2> {
     return Scaffold(
       backgroundColor: ColorConst.black,
       body: SingleChildScrollView(
-        child: Column(children: [
+        child: Column(
+          children: [
+         
            Column(
                       children: [
                         
@@ -30,35 +35,40 @@ class _LiveStreaming2State extends State<LiveStreaming2> {
                                       topLeft: Radius.circular(8),
                                        topRight: Radius.circular(8),
                                       ),
-                                     child: Image.asset(AseetsPath.ALBUM),
+                                     child: ReusableImageWithShimmer(
+                                    url  : "https://c.saavncdn.com/758/295-Sidhu-Moose-Wala--English-2021-20210922022502-500x500.jpg", height: 140,isCircle: false,boxFit: BoxFit.cover,
+                                     )
                                 ),
                
                               Container(
-                                margin: EdgeInsets.symmetric(horizontal: 1.w),
+                              //  margin: EdgeInsets.symmetric(horizontal: 1.w),
                               width: double.infinity,
-                              height: 10.h,
+                              height: 80,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20),bottomRight: Radius.circular(20)),
                                 color: ColorConst.white
                                
                               ),
                               child: Row(
-                         
+                                                     
                                 children: [
-                                  SizedBox(width: 2.w,),
+                                  SizedBox(width: 10,),
                                   Expanded(
-                                    flex: 2,
+                                    flex: 3,
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
                                         Text("Saad Lamjarred Live Streaming",style: StyleConst.textStyle17black,),
                                          Text("Luxury Party Band",style: StyleConst.textStyle14black,),
+                                        SizedBox(
+                                          height: 3,
+                                        ),
                                         Row(
                                           children: [
                                             Container(
-                                              width: 8.w,
-                                              height: 5.h,
+                                              width: 20,
+                                              height: 20,
                                               decoration: BoxDecoration(
                                                 shape: BoxShape.circle,
                                                 image: DecorationImage(image: AssetImage(AseetsPath.USER))
@@ -69,32 +79,34 @@ class _LiveStreaming2State extends State<LiveStreaming2> {
                                             ),
                                             Text("Scintillate",style: StyleConst.textStyle12black,)
                                           ],
-                                        )
+                                        ),
+                                        SizedBox(
+                                          height: 4,
+                                        ),
                                       ],
                                     ),
                                   ),
-                         Expanded(
-                           child: Column(
+                                                     Expanded(
+                                                       child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Container(
+                                    padding: EdgeInsets.symmetric(vertical: 4),
+                                    margin:EdgeInsets.symmetric(horizontal: 5) ,
                                     decoration: BoxDecoration(
                                       color: ColorConst.red,
                                       borderRadius: BorderRadius.circular(50),
-                           
+                                                       
                                     ),
-                                   child: Padding(
-                                     padding:  EdgeInsets.symmetric(horizontal: 7.w,vertical: 0.7.h),
-                                     child: Text("Live",style: StyleConst.textStyle15white,),
-                                   ),
+                                   child: Center(child: Text("Live",style: StyleConst.textStyle15white,)),
                                   ),
                                   Text("3K watching",style: StyleConst.textStyle12black,)
                                 ],
-                           ),
-                         )
+                                                       ),
+                                                     )
                                 ],
                               ),
-                        ),
+                                                    ),
                             ],
                           ),
                        
@@ -104,7 +116,7 @@ class _LiveStreaming2State extends State<LiveStreaming2> {
                       ],
                     ),
                      SizedBox(
-                          height: 2.h,
+                          height: 18,
                         ),
           
                      Row(
@@ -120,69 +132,14 @@ class _LiveStreaming2State extends State<LiveStreaming2> {
                         ],),
                         Container(
                           width: double.infinity,
-                          height: 23.h,
+                          height: 174,
                           child: ListView.builder(
                             shrinkWrap: true,
                             scrollDirection: Axis.horizontal,
                             itemCount: 12,
                             itemBuilder: ((context, index) {
-                            return Container(
-                              width: 40.w,
-                              margin: EdgeInsets.symmetric(horizontal: 2.w,vertical: 1.h),
-                              decoration: BoxDecoration(
-                                color: ColorConst.white,
-                                borderRadius: BorderRadius.circular(8),
-          
-                           ),
-                              child: Column(
-                              
-                                children: [
-                                ClipRRect(
-                                     borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(8),
-                                       topRight: Radius.circular(8),
-                                      ),
-                                     child: Image.asset(AseetsPath.IMAGE),
-                                ),
-                                Padding(
-                                  padding:  EdgeInsets.symmetric(horizontal: 2.w),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                     
-                                      Text("Armaan Malik",style: StyleConst.textStyle12black,),
-                                       Row(
-
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                         children: [
-                                          
-                                            SizedBox(width: 1.w,),
-                                            Text("kr8ivesyed",style: StyleConst.textStyle11black,),
-                                         ],
-                                       ),
-                                    
-                                       Divider(
-          
-                                       ),
-                                       Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                      Container(
-                                        padding: EdgeInsets.symmetric(horizontal: 3.w,vertical: 02),
-                                        decoration: BoxDecoration(
-                                          color: ColorConst.red,
-                                          borderRadius: BorderRadius.circular(30)
-                                        ),
-                                        child: Text('Live',style: StyleConst.textStyle14white,),
-                                      ),
-                                      Text("3K watching",style: StyleConst.textStyle12black,)
-                                       ],),
-                                    ],
-                                  ),
-                                )
-          
-                              ]),
-                            );
+                            return
+                            Reuseablelivestreaming();
                           })
                           ),
                         ),
@@ -199,56 +156,16 @@ class _LiveStreaming2State extends State<LiveStreaming2> {
                         ],),
                         Container(
                           width: double.infinity,
-                          height: 20.h,
+                          height: 150,
                           child: ListView.builder(
                             shrinkWrap: true,
                             scrollDirection: Axis.horizontal,
                             itemCount: 12,
                             itemBuilder: ((context, index) {
-                            return Container(
-                              width: 40.w,
-                            
-                              margin: EdgeInsets.symmetric(horizontal: 2.w,vertical: 1.h),
-                              decoration: BoxDecoration(
-                                color: ColorConst.white,
-                                borderRadius: BorderRadius.circular(8),
-          
-                           ),
-                              child: Stack(
-                              alignment: Alignment.bottomCenter,
-                                children: [
-                               Container(
-        
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  image: DecorationImage(image: NetworkImage("https://c.saavncdn.com/758/295-Sidhu-Moose-Wala--English-2021-20210922022502-500x500.jpg",),fit: BoxFit.cover)
-                                ),
-                               ),
-                               
-                                Container(
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(color: 
-                                  ColorConst.black.withOpacity(.6),
-                                  
-                                  ),
-                                  child: Padding(
-                                    padding:  EdgeInsets.symmetric(horizontal: 2.w,vertical: 0.8.h),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      
-                                      children: [
-                                        Text("Luxury Showbands",style: StyleConst.textStyle12white,),
-                                          Text("22K Views",style: StyleConst.textStyle12white,),
-                                      ],
-                                    ),
-                                  ),
-                                )
-          
-                              ]),
-                            );
-                          })
-                          ),
+                            return ReuseableContainer();
+                             
+  }
+                            ))
                         )
         ]),
       ),
